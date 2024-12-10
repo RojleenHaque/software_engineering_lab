@@ -1,0 +1,16 @@
+@media (min-width: 992px)
+ {
+  .hidden_menu {
+      display:none;
+  }
+
+  .navigation_bar {
+    flex-wrap: nowrap;
+  }
+
+  .navigation_bar .expand_navbar {
+    display: flex !important;
+    flex-basis: auto;
+}
+  
+}
