@@ -1,3 +1,5 @@
+//footer
+
 const Footer =()=> {
   return(
 

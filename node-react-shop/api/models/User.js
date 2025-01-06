@@ -1,3 +1,5 @@
+//models//User.js
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -16,8 +18,7 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-
-//register password
+// Register password hashing
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {  // Only hash the password if it has been modified
     return next();
@@ -28,6 +29,6 @@ userSchema.pre("save", async function (next) {
   next();  // Proceed to the next middleware or save function
 });
 
+const userModel = mongoose.model("User", userSchema);
 
-// Export the User model
-module.exports = mongoose.model("User", userSchema);
+export default userModel;

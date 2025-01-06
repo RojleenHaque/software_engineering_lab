@@ -1,5 +1,9 @@
+
+  
+
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios"; // Make sure to install axios
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +21,7 @@ const SignUp = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, password, confirmPassword } = formData;
 
@@ -33,8 +37,24 @@ const SignUp = () => {
     }
 
     setError("");
-    setSuccess("Signup successful!");
-    // Add logic to register the user here
+    
+    // Call API to register the user
+    try {
+      const response = await axios.post("http://localhost:4000/api/users/", {
+        name,
+        email,
+        password,
+      });
+
+      if (response.status === 200) {
+        setSuccess("Signup successful!");
+        // Optionally, clear the form
+        setFormData({ name: "", email: "", password: "", confirmPassword: "" });
+      }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      setError("An error occurred while processing your signup. Please try again.");
+    }
   };
 
   return (
@@ -92,9 +112,13 @@ const SignUp = () => {
               onChange={handleChange}
             />
           </div>
+          <div className="adjust_button">
           <button type="submit" className="btn btn-primary w-100">
+          
             Sign Up
+           
           </button>
+          </div>
         </form>
         <p className="text-center mt-3">
           Already have an account? <a href="/login">Login</a>
@@ -105,3 +129,5 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+

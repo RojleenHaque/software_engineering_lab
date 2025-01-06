@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+
+
+
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";  // Import useNavigate from react-router-dom
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Sergel", price: 7.0, quantity: 1 },
-    { id: 2, name: "Azithromycin", price: 35.0, quantity: 2 },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();  // Initialize useNavigate hook
+
+  // Load cart items from localStorage on component mount
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartItems(storedCart);
+  }, []);
 
   const handleQuantityChange = (id, delta) => {
     const updatedCart = cartItems.map((item) =>
@@ -14,11 +23,13 @@ const Cart = () => {
         : item
     );
     setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
   };
 
   const handleRemove = (id) => {
     const updatedCart = cartItems.filter((item) => item.id !== id);
     setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
   };
 
   const calculateTotal = () => {
@@ -26,6 +37,30 @@ const Cart = () => {
       (total, item) => total + item.price * item.quantity,
       0
     );
+  };
+
+  const handleCheckout = async () => {
+    const orderData = cartItems.map(item => ({
+      productId: item.id,
+      quantity: item.quantity,
+    }));
+
+    try {
+      const response = await axios.post("http://localhost:4000/orders", {
+        items: orderData,
+      });
+
+      if (response.status === 200) {
+        alert("Order successfully placed!");
+        setCartItems([]);
+        localStorage.removeItem("cart"); // Clear cart after order
+        // Navigate to the payment page after placing the order
+        navigate("/payment");
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+      alert("An error occurred while processing your order.");
+    }
   };
 
   return (
@@ -54,7 +89,7 @@ const Cart = () => {
               {cartItems.map((item) => (
                 <tr key={item.id}>
                   <td>{item.name}</td>
-                  <td>${item.price.toFixed(2)}</td>
+                  <td>Tk{item.price.toFixed(2)}</td>
                   <td>
                     <div className="d-flex justify-content-center">
                       <button
@@ -78,7 +113,7 @@ const Cart = () => {
                       </button>
                     </div>
                   </td>
-                  <td>${(item.price * item.quantity).toFixed(2)}</td>
+                  <td>Tk{(item.price * item.quantity).toFixed(2)}</td>
                   <td>
                     <button
                       className="btn btn-sm btn-danger"
@@ -93,9 +128,14 @@ const Cart = () => {
           </table>
           <div className="text-end">
             <h4>
-              Total: <span>${calculateTotal().toFixed(2)}</span>
+              Total: <span>Tk{calculateTotal().toFixed(2)}</span>
             </h4>
-            <button className="btn btn-success mt-3">Proceed to Checkout</button>
+            <button
+              className="btn btn-success mt-3"
+              onClick={handleCheckout}
+            >
+              Proceed to Pay
+            </button>
           </div>
         </div>
       )}

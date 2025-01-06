@@ -1,3 +1,5 @@
+//models/product.js
+
 const mongoose = require('mongoose');
 
 // // Review Schema
@@ -19,4 +21,8 @@ const productSchema = mongoose.Schema({
 });
 
 // Export the Product model
-module.exports = mongoose.model("Product", productSchema);
+// module.exports = mongoose.model("Product", productSchema);
+
+
+const productModel=mongoose.model("Product", productSchema);
+export default productModel;

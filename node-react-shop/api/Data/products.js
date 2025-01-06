@@ -1,4 +1,4 @@
-//Data/products.js
+//.Data/products.js
 const products = [
     {// id: 1,
          name: "Sergel", image: "./asset/sergel-20-mg-capsule.jpg",description:"Tablet",  price: "7.00", discount_price: "6.30" },

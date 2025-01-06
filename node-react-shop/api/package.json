@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "online medicine shop project",
   "main": "index.js",
+  "type" :"module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
@@ -10,16 +11,23 @@
   },
   "author": "",
   "license": "ISC",
-  
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
     "concurrently": "^9.1.0",
-    "dotenv": "^16.4.5",
-    "express": "^4.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.8.3",
+    "mongoose": "^8.9.3",
     "morgan": "^1.10.0",
-    "nodemon": "^3.1.7"
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.9",
+    "razorpay": "^2.9.5",
+     "rectify": "^0.1.0",
+    "stripe": "^17.5.0",
+    "validator": "^13.12.0"
   }
 }

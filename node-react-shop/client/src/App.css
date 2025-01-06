@@ -155,6 +155,14 @@
   z-index: 9999;
   top:0;
 }
+dl, ol, ul {
+  margin-top: 5%;
+  margin-bottom: 1rem;
+}
+.form-control{
+  width: 50%;
+  margin-left: 25%;
+}
 .header-bar{
   height: 60px;
   top:0;
@@ -162,6 +170,7 @@
 justify-content: space-between;
 background-color:#e1e8f1;
 }
+
 .header-bar .img{
   height: 30px;
   padding-left: 50px;
@@ -177,10 +186,43 @@ background-color:#e1e8f1;
   background-position: center;
   background-size: 100%;
 } */
+
+.header-bar nav ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;  /* Adjusts the space between each link */
+  padding: 0;
+}
+.header-bar nav ul li {
+  display: inline-block;  /* Makes the list items horizontal */
+}
+
+.header-bar nav ul li a {
+  text-decoration: none;
+
+  font-size: larger;
+  color:blue;  /* You can adjust the color */
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 10px;  /* Adds space around the links */
+}
+.header-bar nav ul li a:hover {
+  color: #0066cc;  /* Color on hover */
+  background-color: #f0f0f0;  /* Background on hover */
+  border-radius: 5px;  /* Optional: Adds rounded corners */
+}
+
+/* Optional: Styling for cart image */
+.cart-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
 nav.navigation_bar{
   padding-top: 10px;
   padding-right: 2%;
   justify-content: flex-end;
+  display: flex;
 }
 .navigation_bar .expand_navbar{
   justify-content: flex-end;
@@ -466,3 +508,205 @@ button{
   }
   
 
+  /* for search by text */
+  .search-results-page {
+    padding: 20px;
+  }
+  
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+  }
+  
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  
+  .product-details {
+    text-align: center;
+  }
+  
+  .product-name {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .product-description {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .product-price {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .discount-price {
+    color: #e63946;
+    font-weight: bold;
+  }
+    
+  /*  to adjust the page */
+  .search-results-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: #f8f9fa; /* Light background */
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .search-results-page h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    margin-top: 7%;
+    color: #007bff; /* Blue heading */
+  }
+  
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .product-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 300px; /* Fixed width for cards */
+    box-shadow: 0px 4px 6px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  
+  .product-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .product-details h5 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .product-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  
+  .product-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color:white;
+  }
+  
+  .discount-price {
+    font-size: 1rem;
+    color: #dc3545; /* Red for discount */
+
+
+  }
+
+
+
+  /* search by price range */
+  label {
+    margin-top: 5%;
+    color: #ddd;
+    text-decoration: solid;
+    display: flex;
+    margin-right: 5%;
+    
+    /* margin: 5%; */
+    /* background: white; */
+    /* display: inline-block; */
+}
+
+.product-price{
+  display: flex;
+}
+.price-range {
+  display: flex;
+  
+}
+
+.price-range input {
+  padding: 5px;
+  width: 80px; /* Reduce the input field length */
+  border-radius: 5px;
+  text-align: center; /* Center the text inside inputs */
+}
+
+button {
+  margin-top: 10px;
+}
+.search_button {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the content */
+  gap: 15px;
+}
+
+.a{
+  width:29%;
+}
+.b{padding-top: 5%;
+  float: left;
+}
+.b button {
+  background-color: white;
+  color: #5227de;
+}
+.total-body-section{
+  padding-top: 260px;
+}
+
+.c{
+  /* float: left; */
+  width:61%;
+}
+.w-100 {
+
+  /* float: left; */
+  /* width: 50%; */
+  /* width: 100% !important; */
+}
+
+
+.justify-content-center {
+  width: 90%;
+  justify-content: center !important;
+}
+
+
+.adjust_button{
+  width: 61%;
+}

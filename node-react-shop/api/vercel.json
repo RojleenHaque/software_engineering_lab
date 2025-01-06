@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "name":"online-medicine-store",
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/api/(.*)",
+        "dest": "/api/index.js"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "MONGO_URI": "your-mongo-db-uri",
+      "JWT_SECRET": "your-jwt-secret"
+    }
+  }
+  
